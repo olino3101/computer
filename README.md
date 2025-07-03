@@ -1,4 +1,3 @@
-```
 # Computor v1 (Mandatory Only)
 
 A simple Python program that solves polynomial equations of degree ≤ 2.
@@ -17,4 +16,3 @@ Notes:
 - Only accepts well-formed equations.
 - Handles real and complex roots.
 - Made for the 42 project "Computor v1"
-```
