@@ -1,6 +1,7 @@
 import sys
 from typing import Optional, Tuple
 import numpy as np
+from utils import trim_zero
 
 def check_arg():
     if len(sys.argv) != 2:
@@ -13,15 +14,6 @@ def parse_side(tokens):
         nbr_to_append *= -1
     del tokens[:4]
     return nbr_to_append
-
-def trim_zero(arr):
-    i = 1
-    while i <= len(arr):
-        if arr[-i] == 0:
-            del arr[-i]
-        else:
-            break
-    return arr
 
 def get_coefficients(equation_text) -> Optional[Tuple[np.ndarray, np.ndarray]]:
     tokens = equation_text.split(" ")
@@ -42,7 +34,7 @@ def get_coefficients(equation_text) -> Optional[Tuple[np.ndarray, np.ndarray]]:
         coefficients_right.append(parse_side(tokens))
 
     # remove number that equals to 0
-    coefficients_left = trim_zero(coefficients_left)
+    coefficients_left, coefficients_right = trim_zero(coefficients_left, coefficients_right)
     if len(coefficients_left) == 0:
         raise Exception("Equation is only 0")
     return np.array(coefficients_left), np.array(coefficients_right)
