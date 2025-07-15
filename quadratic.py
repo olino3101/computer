@@ -54,7 +54,7 @@ def neg_discriminant(equation, discriminant):
     i_nbr = math.sqrt(abs(discriminant))
     if equation[1] == 0:
         neg_discriminant_has_zero(div_a, i_nbr)
-    
+        return 
     #simplifies everything
     gcd = euclidean_algo(-equation[1], div_a, i_nbr)
     if gcd % 1 == 0:

@@ -23,7 +23,6 @@ def get_reduced_form(left, right) -> Optional[Tuple[np.ndarray, np.ndarray]]:
             left[i] -= right[i]
         right[i] -= right[i]
     left, right = trim_zero(left, right)
-    print(f"Left side after reduction: {left}, Right side after reduction: {right}")
     return left, right
 
 # Positive discriminant (b² - 4ac > 0): Two distinct real roots.
@@ -43,12 +42,10 @@ def resolve_equation(equation, degree, is_same):
             print("The polynomial degree is strictly greater than 2, I can't solve.")
 
 def main():
-    # print(f"left {coefficients_left}, right {coefficients_right}, indvi {tokens}")
     try:
         equation_text = check_arg()
         
         left, right  = get_coefficients(equation_text)
-        print(f"Left side: {left}, Right side: {right}")
         # reduced form
         left_RF, right_RF = get_reduced_form(left, right)
         # check if they are same
